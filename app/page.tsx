@@ -1,4 +1,6 @@
+require('dotenv').config();
 import Image from "next/image";
+import Link from "next/link"
 
 export default function Home() {
   return (
@@ -20,7 +22,12 @@ export default function Home() {
             </code>
             .
           </li>
-          <li>Save and see your changes instantly.</li>
+          <li>Lưu và thấy những chỉnh sửa của bạn ngay lập tức.</li>
+          <li><Link href="/profile">➡️ Đi đến trang Profile</Link></li>
+          <li><Link href="/api/hello">➡️ Đi đến API Hello</Link></li>
+          <li><Link href="/Todo-app">➡️ Đi đến trang Todo App</Link></li>
+          <li><Link href="/auth/login">➡️ Đi đến trang Đăng Nhập</Link></li>
+                    
         </ol>
 
         <div className="flex gap-4 items-center flex-col sm:flex-row">

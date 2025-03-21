@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Khai",
+    "email": "user@gmail.com",
+    "password": "$2b$10$H4kda0NJT8PXlY6zgtGCc.m4uaHIuorIi8EWXb5adfrphiWY.vV82"
+  },
+  {
+    "name": "Khai",
+    "email": "khai@gmail.com",
+    "password": "$2b$10$zAecC1eBwoNvNQfrb9NRZeO5q9hQpucw.yLSU9nC6LO5Qpxc/O/RS"
+  },
+  {
+    "name": "user2",
+    "email": "user2@gmail.com",
+    "password": "$2b$10$rgwtmNIJM84ZhT3prCvXj.xB.bw7MRkVsdDLdTj7RwsjSG7SXWHhC"
+  }
+]
