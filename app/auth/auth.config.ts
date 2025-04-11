@@ -5,18 +5,24 @@ export const authConfig = {
       signIn: '/auth/login',
     },
     callbacks: {
-        authorized({ auth, request: { nextUrl } }) {
-          const isLoggedIn = !!auth?.user;
-          const isOnPublic = ['/',"/login", '/posts'].includes(nextUrl.pathname);
-          console.log("on authorized"+nextUrl.pathname)
-          if (!isOnPublic && !isLoggedIn) {
-              return false; // Redirect unauthenticated users to login page
-          }
-          if (isLoggedIn && nextUrl.pathname.startsWith("/auth/login")) {
-            return NextResponse.redirect(new URL('/', nextUrl));
-          }
-          return true;
-        },
+      authorized({ auth, request: { nextUrl } }) {
+        const isLoggedIn = !!auth?.user;
+        const isOnPublic = ['/',"/login", '/posts'].includes(nextUrl.pathname);
+        console.log("on authorized"+nextUrl.pathname)
+        if (!isOnPublic && !isLoggedIn) {
+            return false; // Redirect unauthenticated users to login page
+        }
+        if (isLoggedIn && nextUrl.pathname.startsWith("/auth/login")) {
+          return NextResponse.redirect(new URL('/profile', nextUrl));
+        }
+        return true;
       },
-      providers: [], // Add providers with an empty array for now
+
+    },
+    providers: [], // Add providers with an empty array for now
+    session: {
+      strategy: "jwt",
+      maxAge: 30 * 24 * 60 * 60, // 30 days
+    },
+    secret: process.env.NEXTAUTH_SECRET
   } satisfies NextAuthConfig;

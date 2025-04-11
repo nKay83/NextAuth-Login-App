@@ -8,20 +8,8 @@ import path from "path";
 import Google from 'next-auth/providers/google';
 import Facebook from 'next-auth/providers/facebook';
 import GitHub from 'next-auth/providers/github';
+import { createUserOAuth2, getUser } from '@/app/lib/db'; // Import your database functions
 
-const dataFile = path.join(process.cwd(), "app/data/users.json");
-
-async function getUser(email: string) {
-    try {
-        const users = JSON.parse(fs.readFileSync(dataFile, "utf8") || "[]");
-        const user = users.find((user: any) => user.email === email);
-        console.log(user)
-        return user;
-    } catch (error) {
-      console.error('Failed to fetch user:', error);
-      throw new Error('Failed to fetch user.');
-    }
-  }
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
     ...authConfig,
@@ -56,4 +44,28 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           clientSecret: process.env.GITHUB_CLIENT_SECRET!,
       }),
     ],
+    callbacks:{
+      async signIn({ user, account }) {
+        if (account?.provider !== "credentials") {
+          // Kiểm tra nếu người dùng đã tồn tại trong cơ sở dữ liệu
+          // Nếu không tồn tại, tạo người dùng mới
+          // và yêu cầu họ đặt mật khẩu
+          if (!user.email) {
+            return false; // Không cho phép đăng nhập nếu không có email
+          }
+          const existingUser = await getUser(user.email);
+  
+          if (!existingUser) {
+            if (!user.name) {
+              console.log("user.name không tồn tại");
+              return false; // Không cho phép đăng nhập nếu không có tên
+            }
+            console.log("Tạo người dùng mới:", user.name, user.email);
+            await createUserOAuth2(user.name, user.email); // Tạo người dùng mới với mật khẩu rỗng  
+            return true ; // Cho phép đăng nhập
+          }
+        }
+        return true;
+      },
+    }
   });

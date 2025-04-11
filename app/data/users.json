@@ -13,5 +13,15 @@
     "name": "user2",
     "email": "user2@gmail.com",
     "password": "$2b$10$rgwtmNIJM84ZhT3prCvXj.xB.bw7MRkVsdDLdTj7RwsjSG7SXWHhC"
+  },
+  {
+    "name": "Kải",
+    "email": "khaisx99@gmail.com",
+    "password": "$2b$10$KeMECqhWMHC9n2t19zZYT.pkjY5nRhHv8QOPz6aKL.FDZwtrAAWka"
+  },
+  {
+    "name": "0043_Nguyễn Nhật Khải",
+    "email": "nnhatkhai83@gmail.com",
+    "password": "$2b$10$fMRZU2wF64F.4R/i6W7wDetmXydNklJiLPRjOw4gM11cHsU1XeAfK"
   }
 ]
