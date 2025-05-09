@@ -15,17 +15,25 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       Credentials({
         async authorize(credentials) {
           const parsedCredentials = z
-            .object({ email: z.string().email(), password: z.string().min(6) })
+            .object({ email: z.string().email(), sdt: z.string().min(10), password: z.string().min(6) })
             .safeParse(credentials);
    
           if (parsedCredentials.success) {
-            const { email, password } = parsedCredentials.data;
+            const { email, sdt, password } = parsedCredentials.data;
+            // Kiểm tra xem người dùng có tồn tại trong cơ sở dữ liệu không
             const user = await getUser(email);
             if (!user) return null;
+
+            // Kiểm tra số điện thoại
+            if (user.sdt !== sdt) {
+              console.log('Số điện thoại không đúng');
+              return null;
+            }
+
+            // Kiểm tra mật khẩu
             const passwordsMatch = await bcrypt.compare(password, user.password);
             if (passwordsMatch) return user;
         }
-        console.log('Invalid credentials');
         return null;
         },
       }),

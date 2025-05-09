@@ -41,6 +41,21 @@ export default function LoginForm() {
                           <AtSymbolIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
                       </div>
                   </div>
+                  {/* <div>
+                      <label className="block text-sm font-medium text-gray-300" htmlFor="sdt">
+                          Số điện thoại
+                      </label>
+                      <div className="relative mt-1">
+                          <input
+                              className="w-full rounded-md border border-gray-600 bg-gray-900 py-2 pl-10 pr-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                              id="sdt"
+                              type="phone"
+                              name="sdt"
+                              placeholder="Nhập số điện thoại"
+                              required
+                          />
+                      </div>
+                  </div> */}
                   <div>
                       <label className="block text-sm font-medium text-gray-300" htmlFor="password">
                           Mật khẩu
@@ -57,13 +72,14 @@ export default function LoginForm() {
                           <KeyIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
                       </div>
                   </div>
+                  
                   {/* <input type="hidden" name="redirectTo" value={callbackUrl} /> */}
                   <button className="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2 rounded-md flex items-center justify-center transition disabled:opacity-50" disabled={isPending}>
                       Đăng nhập
                       <ArrowRightIcon className="ml-2 h-5 w-5" />
                   </button>
                   <SignInGoogle />
-                  <SignInFacebook />
+                  {/* <SignInFacebook /> */}
                   <SignInGithub />
                     <div className="text-sm text-gray-400 mt-4 text-center">
                         Chưa có tài khoản?{' '}

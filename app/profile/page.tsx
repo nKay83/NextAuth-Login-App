@@ -20,10 +20,10 @@ export default async function ProfilePage() {
             <div className="bg-gray-800 p-6 rounded-lg shadow-lg text-center w-80">
                 <h1 className="text-xl font-bold">Xin chào, {session.user?.name}!</h1>
                 <p className="text-gray-300 mt-2">{session.user?.email}</p>
-                {!dbUser.password && (
+                {/* {!dbUser.password && (
                     <p ><strong>Bạn chưa có mật khẩu!</strong> Nếu muốn đăng nhập bằng email & mật khẩu sau này, hãy <span className="text-blue-700 underline"><a href="/auth/set-password">tạo mật khẩu ngay</a></span>.</p>
                     
-                )}
+                )} */}
                 <div className="mt-4 mx-auto w-28">
                     <LogoutButton />
                 </div>

@@ -17,7 +17,7 @@
   {
     "name": "Kải",
     "email": "khaisx99@gmail.com",
-    "password": "$2b$10$KeMECqhWMHC9n2t19zZYT.pkjY5nRhHv8QOPz6aKL.FDZwtrAAWka"
+    "password": ""
   },
   {
     "name": "0043_Nguyễn Nhật Khải",
@@ -32,11 +32,13 @@
   {
     "name": "John",
     "email": "john@gmail.com",
+    "sdt": "0123456789",
     "password": "$2b$10$g6.mE8kEZL61TxLjqOs0a.dpq0Clo4lqiinPNmI7V1Sn8YVJdSbqS"
   },
   {
     "name": "john",
     "email": "john@example.com",
+    "sdt": "0123456789",
     "password": "$2b$10$4NsowbkYDgRzsDKTsK.mLeq4efQi97V8mKcWo14ksh2xfV0/6V6bq"
   },
   {
@@ -47,6 +49,7 @@
   {
     "name": "Nguyễn Nhật Hải",
     "email": "nkaisx83@gmail.com",
-    "password": ""
+    "password": "",
+    "sdt": "01123392123"
   }
 ]
