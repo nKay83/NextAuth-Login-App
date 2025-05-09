@@ -7,8 +7,9 @@ export const authConfig = {
     callbacks: {
       authorized({ auth, request: { nextUrl } }) {
         const isLoggedIn = !!auth?.user;
-        const isOnPublic = ['/',"/login", '/posts'].includes(nextUrl.pathname);
+        const isOnPublic = ['/', "/auth/login", '/posts', '/auth/register', ].includes(nextUrl.pathname);
         console.log("on authorized"+nextUrl.pathname)
+        console.log("isOnPublic"+isOnPublic)
         if (!isOnPublic && !isLoggedIn) {
             return false; // Redirect unauthenticated users to login page
         }

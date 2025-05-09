@@ -27,7 +27,7 @@ export default function SetPasswordPage() {
 
     if (res.ok) {
       setSuccess(true);
-      setTimeout(() => {router.push("/profile")}, 2000); // Chuyển hướng đến trang profile sau 2 giây
+      setTimeout(() => {router.push("/profile")}, 20000); // Chuyển hướng đến trang profile sau 2 giây
     } else {
       const data = await res.json();
       setError(data.message || "Đã xảy ra lỗi. Vui lòng thử lại.");

@@ -22,10 +22,7 @@ export default function Home() {
             </code>
             .
           </li>
-          <li>Lưu và thấy những chỉnh sửa của bạn ngay lập tức.</li>
           <li><Link href="/profile">➡️ Đi đến trang Profile</Link></li>
-          <li><Link href="/api/hello">➡️ Đi đến API Hello</Link></li>
-          <li><Link href="/Todo-app">➡️ Đi đến trang Todo App</Link></li>
           <li><Link href="/auth/login">➡️ Đi đến trang Đăng Nhập</Link></li>
                     
         </ol>

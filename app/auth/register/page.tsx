@@ -19,7 +19,6 @@ export default function Register() {
   const [password, setPassword] = useState<string>("");
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [errors, setErrors] = useState<Errors>({});
-  const [successMessage, setSuccessMessage] = useState<string>("");
 
   const validateForm = (): boolean => {
     const newErrors: Errors = {};
@@ -70,7 +69,7 @@ export default function Register() {
           autoClose: 1000,
         });
         setTimeout(() => {
-          router.push("/");
+          router.push("/auth/login");
         }, 1000);
         setName("");
         setEmail("");
@@ -91,86 +90,85 @@ export default function Register() {
     }
   };
   return (
-    <div>
-      <div className='mx-auto grid grid-rows-none items-center justify-items-center max-w-96 min-h-1 p-8 pb-20 gap-2 sm:p-20 font-[family-name:var(--font-geist-sans)]'>
-        <h2
-          style={{
-            fontSize: "21px",
-            textAlign: "center",
-            paddingTop: "20px",
-          }}
-        >
-          Đăng Ký
-        </h2>
-        <div className=''></div>
-        <form onSubmit={handleSubmit} className=''>
+    <div className="min-h-screen bg-black flex items-center justify-center">
+      <div className="bg-gray-800 p-8 rounded-lg shadow-lg text-white w-96">
+        <h1 className="text-2xl font-bold text-center mb-4">Tạo tài khoản mới</h1>
+        <form onSubmit={handleSubmit} className="space-y-4">
           {/* Name Field */}
-          <div className={''}>
-            <label htmlFor="Name">Tên</label>
+          <div>
+            <label className="block text-sm font-medium text-gray-300" htmlFor="name">
+              Tên
+            </label>
             <input
-              id="Name"
+              id="name"
               type="text"
-              className='min-h-12 rounded-md text-black'
+              className="w-full rounded-md border border-gray-600 bg-gray-900 py-2 px-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              placeholder="Nhập tên"
+              required
             />
-            {errors.name && (
-              <div className={''}>{errors.name}</div>
-            )}
+            {errors.name && <div className="text-red-500 text-sm mt-1">{errors.name}</div>}
           </div>
 
           {/* Email Field */}
-          <div className={''}>
-            <label htmlFor="Email">Email</label>
+          <div>
+            <label className="block text-sm font-medium text-gray-300" htmlFor="email">
+              Email
+            </label>
             <input
-              id="Email"
-              type="text"
-              className="min-h-12 rounded-md text-black"
+              id="email"
+              type="email"
+              className="w-full rounded-md border border-gray-600 bg-gray-900 py-2 px-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              placeholder="Nhập email"
+              required
             />
-            {errors.email && (
-              <div className={''}>{errors.email}</div>
-            )}
+            {errors.email && <div className="text-red-500 text-sm mt-1">{errors.email}</div>}
           </div>
 
           {/* Password Field */}
-          <div className={''}>
-            <label htmlFor="Password">Mật khẩu</label>
-            <div className={''}>
+          <div>
+            <label className="block text-sm font-medium text-gray-300" htmlFor="password">
+              Mật khẩu
+            </label>
+            <div className="relative">
               <input
-                id="Password"
+                id="password"
                 type={showPassword ? "text" : "password"}
-                className='min-h-12 rounded-md text-black'
+                className="w-full rounded-md border border-gray-600 bg-gray-900 py-2 px-3 text-white pr-10 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                placeholder="Nhập mật khẩu"
+                required
               />
               <button
                 type="button"
-                className={''}
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400"
                 onClick={toggleShowPassword}
               >
                 {!showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
               </button>
             </div>
-            {errors.password && (
-              <div className={''}>{errors.password}</div>
-            )}
+            {errors.password && <div className="text-red-500 text-sm mt-1">{errors.password}</div>}
           </div>
-
-          {/* Success Message */}
-          {successMessage && (
-            <div className={''}>{successMessage}</div>
-          )}
-
+        
           {/* Submit Button */}
-          <button type="submit" className={'ml-20'}>
-            Đăng Ký
+          <button
+            type="submit"
+            className="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2 rounded-md flex items-center justify-center transition disabled:opacity-50"
+          >
+            Đăng ký
           </button>
+
+          <div className="text-sm text-gray-400 mt-4 text-center">
+            Đã có tài khoản?{" "}
+            <Link href="/auth/login" className="text-blue-500 hover:underline">
+              Đăng nhập ngay
+            </Link>
+          </div>
         </form>
-        <Link href={"/auth/signin"} className={''}>
-          Đăng Nhập
-        </Link>
       </div>
     </div>
   );

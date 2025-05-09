@@ -3,8 +3,6 @@ import { authConfig } from './auth.config';
 import Credentials from 'next-auth/providers/credentials';
 import { z } from 'zod';
 import bcrypt from "bcryptjs";
-import fs from "fs";
-import path from "path";
 import Google from 'next-auth/providers/google';
 import Facebook from 'next-auth/providers/facebook';
 import GitHub from 'next-auth/providers/github';
@@ -46,11 +44,12 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     ],
     callbacks:{
       async signIn({ user, account }) {
+        console.log("signIn");
         if (account?.provider !== "credentials") {
           // Kiểm tra nếu người dùng đã tồn tại trong cơ sở dữ liệu
           // Nếu không tồn tại, tạo người dùng mới
           // và yêu cầu họ đặt mật khẩu
-          if (!user.email) {
+          if (!user.email) { 
             return false; // Không cho phép đăng nhập nếu không có email
           }
           const existingUser = await getUser(user.email);
